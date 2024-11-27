@@ -15,6 +15,28 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 
-pdf_path = "./data/TEACHER/10504237.pdf"
-extracted_text = extract_text_from_pdf(pdf_path)
-print(extracted_text)  # Print the extracted text to see it
+import os
+
+def extract_text_from_pdfs_in_directory(directory_path):
+    all_texts = {}
+    
+    # Loop through all PDF files in the directory
+    for filename in os.listdir(directory_path):
+        if filename.endswith(".pdf"):
+            pdf_path = os.path.join(directory_path, filename)
+            extracted_text = extract_text_from_pdf(pdf_path)
+            all_texts[filename] = extracted_text  # Store the extracted text with the filename as key
+    
+    return all_texts
+
+# Example usage
+directory_path = "./data/ACCOUNTANT"
+pdf_texts = extract_text_from_pdfs_in_directory(directory_path)
+
+# Print text of each PDF file
+for filename, text in pdf_texts.items():
+    print(f"Text from {filename}:\n{text}\n")
+
+
+
+
