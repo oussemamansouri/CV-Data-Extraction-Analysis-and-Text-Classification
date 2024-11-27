@@ -21,6 +21,7 @@ This project is focused on developing an intelligent CV screening tool that leve
 4. Validate the tool with end-users (e.g., HR professionals) to ensure practical utility.
 
 This project is designed to assist recruiters by automating the candidate screening process, saving time, and improving decision-making efficiency.
+**Dataset link** : https://www.kaggle.com/datasets/snehaanbhawal/resume-dataset?resource=download
 
 ---
 **Note:** This project adheres to data privacy and confidentiality regulations by anonymizing sensitive information in the collected CV dataset.
