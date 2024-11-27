@@ -3,6 +3,15 @@ import os
 import pandas as pd
 import re
 
+def clean_text(text):
+    """Clean extracted text by removing extra spaces, newlines, and unwanted characters."""
+    # Remove extra spaces and newlines
+    text = re.sub(r'\s+', ' ', text)  # Replace multiple whitespaces with a single space
+    text = text.strip()  # Remove leading and trailing spaces
+    # Remove unwanted characters (e.g., non-breaking spaces, special characters)
+    text = re.sub(r'[^\x00-\x7F]+', '', text)  # Remove non-ASCII characters
+    return text
+
 def extract_text_from_pdf(pdf_path):
     """Extract text from a single PDF file."""
     doc = fitz.open(pdf_path)
@@ -13,53 +22,40 @@ def extract_text_from_pdf(pdf_path):
         page = doc.load_page(page_num)
         text += page.get_text("text")
     
-    return text
+    return clean_text(text)  # Clean the extracted text
 
 def extract_information_from_text(text):
     """Extract key information from the text of a CV using regex."""
     data = {
-        "Full Name": None,
-        "Contact Info": None,
-        "Summary": None,
         "Work Experience": None,
         "Education": None,
         "Skills": None,
-        "Languages": None
+        "Languages": None,
+        "directory": None,
+        "filename": None
     }
     
     # Example regex patterns for extracting information
-    name_pattern = re.compile(r"(?:Name|Full\s+Name)\s*[:\-]?\s*([A-Za-z\s]+)")
-    contact_pattern = re.compile(r"(\+?[0-9]{1,3}[ -]?)?(\(?\d{3}\)?[ -]?\d{3}[ -]?\d{4})") 
-    summary_pattern = re.compile(r"(Summary|Profile|Objective)\s*[:\-]?\s*(.*?)(Work Experience|Skills|Education)", re.DOTALL)
     work_experience_pattern = re.compile(r"(Work\s+Experience|Professional\s+Experience)\s*[:\-]?\s*(.*?)(Education|Skills|Languages)", re.DOTALL)
     education_pattern = re.compile(r"(Education|Academic\s+Background)\s*[:\-]?\s*(.*?)(Skills|Languages)", re.DOTALL)
     skills_pattern = re.compile(r"(Skills|Key\s+Skills)\s*[:\-]?\s*(.*?)(Languages|End)", re.DOTALL)
     languages_pattern = re.compile(r"(Languages)\s*[:\-]?\s*(.*)", re.DOTALL)
     
     # Extract information using the regex patterns
-    name_match = name_pattern.search(text)
-    contact_match = contact_pattern.search(text)
-    summary_match = summary_pattern.search(text)
     work_experience_match = work_experience_pattern.search(text)
     education_match = education_pattern.search(text)
     skills_match = skills_pattern.search(text)
     languages_match = languages_pattern.search(text)
     
     # Store matches if found
-    if name_match:
-        data["Full Name"] = name_match.group(1).strip()
-    if contact_match:
-        data["Contact Info"] = contact_match.group(0).strip()
-    if summary_match:
-        data["Summary"] = summary_match.group(2).strip()
     if work_experience_match:
-        data["Work Experience"] = work_experience_match.group(2).strip()
+        data["Work Experience"] = clean_text(work_experience_match.group(2).strip())
     if education_match:
-        data["Education"] = education_match.group(2).strip()
+        data["Education"] = clean_text(education_match.group(2).strip())
     if skills_match:
-        data["Skills"] = skills_match.group(2).strip()
+        data["Skills"] = clean_text(skills_match.group(2).strip())
     if languages_match:
-        data["Languages"] = languages_match.group(2).strip()
+        data["Languages"] = clean_text(languages_match.group(2).strip())
 
     return data
 
