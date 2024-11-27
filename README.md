@@ -6,7 +6,7 @@ This project is focused on developing an intelligent CV screening tool that leve
 - Work experience
 - Education
 - Skills
-- Contact information
+- Languages
 
 ## Features
 - **Automated CV Parsing:** Extract relevant details from uploaded CVs.  
