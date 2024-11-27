@@ -3,10 +3,11 @@
 ## Description
 This project is focused on developing an intelligent CV screening tool that leverages AI to simplify and enhance the recruitment process. The tool uses Natural Language Processing (NLP) and Large Language Models (LLMs) to extract and summarize key information from CVs, such as:
 
+- Summary
 - Work experience
 - Education
 - Skills
-- Contact information
+- Languages
 
 ## Features
 - **Automated CV Parsing:** Extract relevant details from uploaded CVs.  
