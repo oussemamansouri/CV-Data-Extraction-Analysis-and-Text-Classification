@@ -35,7 +35,7 @@ def extract_information_from_text(text):
         "filename": None
     }
     
-    # Example regex patterns for extracting information
+    # regex patterns for extracting information
     work_experience_pattern = re.compile(r"(Work\s+Experience|Professional\s+Experience)\s*[:\-]?\s*(.*?)(Education|Skills|Languages)", re.DOTALL)
     education_pattern = re.compile(r"(Education|Academic\s+Background)\s*[:\-]?\s*(.*?)(Skills|Languages)", re.DOTALL)
     skills_pattern = re.compile(r"(Skills|Key\s+Skills)\s*[:\-]?\s*(.*?)(Languages|End)", re.DOTALL)
@@ -86,13 +86,13 @@ def save_to_csv(extracted_data, csv_filename="cv_data.csv"):
     df.to_csv(csv_filename, index=False)
     print(f"Data saved to {csv_filename}")
 
-# Example usage
+
 directory_path = "./data"  # Path to the main 'data' directory
 extracted_data = extract_information_from_pdfs_in_directory(directory_path)
 
 # Save the extracted data to a CSV
 save_to_csv(extracted_data)
 
-# Optionally, print the extracted data
+# Print the extracted data
 for data in extracted_data:
     print(f"Data from {data['directory']} - {data['filename']}:\n{data}\n")
