@@ -38,7 +38,7 @@ for column in string_columns:
 # For example, if 'Work Experience' contains job titles or company names, ensure proper formatting.
 # You might want to remove unnecessary characters, or clean up dates, etc.
 
-# Show the cleaned data (optional for inspection)
+# Show the cleaned data 
 cv_data.show(truncate=False)
 
 # Step 7: Convert Spark DataFrame to Pandas DataFrame for saving to CSV
