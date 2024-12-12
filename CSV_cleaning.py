@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, trim, lower, lit, when
+from pyspark.sql.functions import col, trim, lower, lit, when, isnull
 import pandas as pd
 
 # Initialize Spark Session
@@ -166,7 +166,7 @@ for column in critical_columns:
     for directory, content in directory_to_content.items():
         cv_data = cv_data.withColumn(
             column,
-            when(col("directory") == directory, lit(content[column])).otherwise(col(column))
+            when((col("directory") == directory) & isnull(col(column)), lit(content[column])).otherwise(col(column))
         )
 
 # Step 2: Remove Unwanted Columns (directory and filename may not be needed)
@@ -186,17 +186,4 @@ for column in string_columns:
 # cv_data = cv_data.withColumn("name", lit("Anonymized"))
 
 # Step 6: Clean the data for each column more specifically if needed
-# For example, if 'Work Experience' contains job titles or company names, ensure proper formatting.
-# You might want to remove unnecessary characters, or clean up dates, etc.
-
-# Show the cleaned data
-cv_data.show(truncate=False)
-
-# Step 7: Convert Spark DataFrame to Pandas DataFrame for saving to CSV
-pandas_df = cv_data.toPandas()
-
-# Save the cleaned data to a CSV file using Pandas
-pandas_df.to_csv("cleaned_cv_data.csv", index=False)
-
-# Stop Spark Session
-spark.stop()
+# For example, if 'Work Experience' contains job titles or company
