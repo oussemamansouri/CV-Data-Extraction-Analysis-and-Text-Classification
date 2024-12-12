@@ -169,8 +169,9 @@ for column in critical_columns:
             when((col("directory") == directory) & isnull(col(column)), lit(content[column])).otherwise(col(column))
         )
 
-# Step 2: Remove Unwanted Columns (directory and filename may not be needed)
-# cv_data = cv_data.drop("directory", "filename")
+# Step 2: Ensure "directory" column is not altered
+# Make sure "directory" remains intact, if necessary
+# cv_data = cv_data.withColumn("directory", col("directory"))
 
 # Step 3: Remove Duplicates
 cv_data = cv_data.dropDuplicates()
@@ -180,7 +181,6 @@ string_columns = [field.name for field in cv_data.schema.fields if field.dataTyp
 for column in string_columns:
     cv_data = cv_data.withColumn(column, trim(col(column)))  # Trim whitespaces
     cv_data = cv_data.withColumn(column, lower(col(column)))  # Convert to lowercase
-
 
 # Show the cleaned data
 cv_data.show(truncate=False)
