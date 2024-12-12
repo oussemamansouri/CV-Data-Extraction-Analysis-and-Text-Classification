@@ -14,6 +14,9 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     # Ensure export directory exists
     if not os.path.exists(export_dir):
         os.makedirs(export_dir)
+    
+    # Filter out rows with empty or invalid 'directory' values
+    df = df[df['directory'].notna() & (df['directory'] != '')]
 
     # Visualization 1: Count of CVs per directory
     plt.figure(figsize=(10, 6))  # Increase the size
