@@ -80,4 +80,4 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     plt.close()
 
 # Visualize the data
-visualize_data("cleaned_cv_data.csv", export_dir="visualizations")
+visualize_data("updated_dataset.csv", export_dir="visualizations")
