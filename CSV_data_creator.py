@@ -80,14 +80,14 @@ def extract_information_from_pdfs_in_directory(directory_path):
     
     return all_data
 
-def save_to_csv(extracted_data, csv_filename="cv_data.csv"):
+def save_to_csv(extracted_data, csv_filename="csv_data/cv_data.csv"):
     """Save the extracted data to a CSV file."""
     df = pd.DataFrame(extracted_data)
     df.to_csv(csv_filename, index=False)
     print(f"Data saved to {csv_filename}")
 
 
-directory_path = "./data"  # Path to the main 'data' directory
+directory_path = "./cv_pdfs_collection"  # Path to the main 'data' directory
 extracted_data = extract_information_from_pdfs_in_directory(directory_path)
 
 # Save the extracted data to a CSV
