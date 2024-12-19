@@ -10,26 +10,26 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     # Load data
     df = pd.read_csv(csv_filename)
 
-    # Ensure export directory exists
+    # Ensure export Category exists
     if not os.path.exists(export_dir):
         os.makedirs(export_dir)
 
     # Clean up column names by stripping spaces
     df.columns = df.columns.str.strip()
 
-    # Filter out rows with empty or invalid 'directory' values
-    df = df[df['directory'].notna() & (df['directory'] != '')]
+    # Filter out rows with empty or invalid 'Category' values
+    df = df[df['Category'].notna() & (df['Category'] != '')]
 
-    # Visualization 1: Count of CVs per directory
+    # Visualization 1: Count of CVs per Category
     plt.figure(figsize=(10, 6))  # Increase the size
-    sns.countplot(data=df, x='directory', order=df['directory'].value_counts().index, hue='directory', palette='Set2', legend=False)
-    plt.title('Count of CVs per Directory')
-    plt.xlabel('Directory')
+    sns.countplot(data=df, x='Category', order=df['Category'].value_counts().index, hue='Category', palette='Set2', legend=False)
+    plt.title('Count of CVs per Category')
+    plt.xlabel('Category')
     plt.ylabel('Count')
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.subplots_adjust(left=0.1, right=0.9)  # Adjust left and right padding
-    plt.savefig(f'{export_dir}/cv_count_per_directory.png')
+    plt.savefig(f'{export_dir}/cv_count_per_Category.png')
     plt.close()
     
     # Visualization 2: Length of "Work Experience" text
@@ -89,14 +89,14 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     plt.savefig(f'{export_dir}/language_distribution_pie.png')
     plt.close()
 
-    # Visualization 5: Pie chart of 'directory' distribution
+    # Visualization 5: Pie chart of 'Category' distribution
     plt.figure(figsize=(8, 6))  # Increase the size
-    directory_counts = df['directory'].value_counts()
-    directory_counts.plot.pie(autopct='%1.1f%%', startangle=90, colors=sns.color_palette('Set3', len(directory_counts)))
-    plt.title('Distribution of CVs per Directory')
+    Category_counts = df['Category'].value_counts()
+    Category_counts.plot.pie(autopct='%1.1f%%', startangle=90, colors=sns.color_palette('Set3', len(Category_counts)))
+    plt.title('Distribution of CVs per Category')
     plt.ylabel('')  # Hide the y-axis label for pie chart
     plt.tight_layout()
-    plt.savefig(f'{export_dir}/directory_distribution_pie.png')
+    plt.savefig(f'{export_dir}/Category_distribution_pie.png')
     plt.close()
 
     # Visualization 6: Pie chart of 'Has Skills' distribution

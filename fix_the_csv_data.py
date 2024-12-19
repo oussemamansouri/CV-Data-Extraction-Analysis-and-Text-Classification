@@ -180,6 +180,9 @@ df = df.apply(fill_missing_values, axis=1)
 
 df = df.drop('filename', axis=1)
 
+# Rename the column
+df.rename(columns={'directory': 'Category'}, inplace=True)
+
 # Save the updated dataset back to a CSV file
 output_file_path = 'updated_dataset.csv'  # Replace with your desired output file path
 df.to_csv(output_file_path, index=False)
