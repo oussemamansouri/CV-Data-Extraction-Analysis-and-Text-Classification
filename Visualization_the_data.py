@@ -132,11 +132,9 @@ def visualize_data(csv_filename, export_dir="visualizations"):
 
 # Main function to run the visualizations
 def main():
-    # Load the dataset
-    df = pd.read_csv("updated_dataset.csv")
 
     # Visualize the data using different functions
-    visualize_data("updated_dataset.csv", export_dir="visualizations")
+    visualize_data("./csv_data/updated_cv_data.csv", export_dir="visualizations")
 
 # Run the main function
 if __name__ == "__main__":
