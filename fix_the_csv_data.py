@@ -184,7 +184,7 @@ df = df.drop('filename', axis=1)
 df.rename(columns={'directory': 'Category'}, inplace=True)
 
 # Save the updated dataset back to a CSV file
-output_file_path = 'updated_dataset.csv'  # Replace with your desired output file path
+output_file_path = 'our_csv_files/updated_cv_data.csv'  
 df.to_csv(output_file_path, index=False)
 
 print(f"Missing values filled and saved to {output_file_path}")
