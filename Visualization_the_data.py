@@ -21,7 +21,7 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     df = df[df['Category'].notna() & (df['Category'] != '')]
 
     # Visualization 1: Count of CVs per Category
-    plt.figure(figsize=(10, 6))  # Increase the size
+    plt.figure(figsize=(20, 6))  # Increase the size
     sns.countplot(data=df, x='Category', order=df['Category'].value_counts().index, hue='Category', palette='Set2', legend=False)
     plt.title('Count of CVs per Category')
     plt.xlabel('Category')
@@ -80,7 +80,7 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     plt.close()
 
     # Step 5: Pie Chart for language distribution
-    plt.figure(figsize=(8, 6))  # Increase the size
+    plt.figure(figsize=(8, 8))  # Increase the size
     language_counts_series = pd.Series(language_counts)
     language_counts_series.plot.pie(autopct='%1.1f%%', startangle=90, colors=sns.color_palette('Set3', len(language_counts_series)))
     plt.title('Distribution of Languages in CVs')
@@ -90,7 +90,7 @@ def visualize_data(csv_filename, export_dir="visualizations"):
     plt.close()
 
     # Visualization 5: Pie chart of 'Category' distribution
-    plt.figure(figsize=(8, 6))  # Increase the size
+    plt.figure(figsize=(10, 10))  # Increase the size
     Category_counts = df['Category'].value_counts()
     Category_counts.plot.pie(autopct='%1.1f%%', startangle=90, colors=sns.color_palette('Set3', len(Category_counts)))
     plt.title('Distribution of CVs per Category')
