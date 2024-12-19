@@ -7,9 +7,7 @@ This project is designed to **extract, clean, analyze, and classify information 
 - [Features](#features)
 - [Dataset](#dataset)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Model Evaluation](#model-evaluation)
-- [Results](#results)
 - [Data Visualization](#data-visualization)
 - [Contributing](#contributing)
 - [License](#license)
@@ -77,4 +75,33 @@ Install the dependencies using the following command:
 ```bash
 pip install -r requirements.txt
 ```
+## Model Evaluation
+
+The classification model is evaluated using:
+
+- **Accuracy**: The percentage of correctly classified samples.
+- **Classification Report**: Precision, recall, and F1-score for each category.
+- **Confusion Matrix**: A heatmap showing actual vs. predicted categories.
+
+## Data Visualization
+
+The extracted data can be visualized to provide insights, such as:
+
+- **Most Common Skills**: Identify the most frequently mentioned skills across CVs.
+- **Language Distribution**: Analyze the distribution of languages spoken among candidates.
+- **Trends in Work Experience**: Observe patterns in work experience categorized by industry or role.
+
+## Contributing
+
+We welcome contributions! Feel free to:
+
+1. **Fork the Repository**: Create a copy of this repository under your own GitHub account.
+2. **Create a Feature Branch**: Make changes or add new features in a separate branch.
+3. **Submit a Pull Request**: Propose your changes to be merged into the main repository.
+
+Your contributions help make this project better!
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). See the LICENSE file for more details.
 
