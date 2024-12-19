@@ -8,7 +8,7 @@ import seaborn as sns
 import numpy as np
 
 # Load your dataset
-df = pd.read_csv('updated_dataset.csv')
+df = pd.read_csv('./csv_data/updated_cv_data.csv')
 
 # Check for missing values and handle them
 df = df.dropna(subset=['Category', 'Work Experience', 'Education', 'Skills', 'Languages'])
