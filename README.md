@@ -91,6 +91,11 @@ The extracted data can be visualized to provide insights, such as:
 - **Language Distribution**: Analyze the distribution of languages spoken among candidates.
 - **Trends in Work Experience**: Observe patterns in work experience categorized by industry or role.
 
+![cv_count_per_Category Result Image](./visualizations/cv_count_per_Category.png)
+![Category_distribution_pie Result Image](./visualizations/Category_distribution_pie.png)
+![language_distribution_pie Result Image](./visualizations/language_distribution_pie.png)
+![language_occurrences_bar_chart Result Image](./visualizations/language_occurrences_bar_chart.png)
+
 ## Contributing
 
 We welcome contributions! Feel free to:
